@@ -23,28 +23,49 @@ const TodoItemText = styled.span`
     display: inline-block;
     position: relative;
     background-color: ${colours.accent30};
+    @media only screen and (max-width: 800px) {
+      background-color: ${colours.accent};
+    }
     margin-right: 1ch;
     height: var(--actionSize);
-    width: ${window.innerWidth > 800 ? 'var(--actionSize)' : 'calc(var(--actionSize) * 3)'};
+    width: calc(var(--actionSize) * 3);
+    @media only screen and (min-width: 800px) {
+      width: var(--actionSize);
+    }
     border-radius: var(--halfActionSize);
     vertical-align: middle;
-    transition: ${window.innerWidth > 800 ? 'all 0.3s ease-out' : 'none'};
+    transition: none;
+    @media only screen and (min-width: 800px) {
+      transition: all 0.3s ease-out;
+    }
     transition-property: width, background-color;
     button {
-      font-size: ${window.innerWidth > 800 ? '0' : 'auto'};
+      font-size: auto;
+      @media only screen and (min-width: 800px) {
+        font-size: 0;
+      }
       vertical-align: middle;
       svg {
         fill: black;
       }
     }
-    ${
-      window.innerWidth > 800
-        ? ':hover,:focus,:focus-within {background-color: ${colours.accent};width: 5ch;button {font-size: 1ch;svg {height: 100%;width: 100%;position: relative;top: 0.5ch;'
-        : 'none'
-    }
+    @media only screen and (min-width: 800px) {
+      :hover,
+      :focus,
+      :focus-within {
+        background-color: ${colours.accent};
+        width: 5ch;
+        button {
+          font-size: 1ch;
+          svg {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            top: 0.5ch;
+          }
+        }
       }
     }
-  }
   }
 `;
 
@@ -90,8 +111,12 @@ const ActionButton = styled.button`
   vertical-align: middle;
   margin-bottom: 1rem;
   svg {
-    height: ${window.innerWidth > 800 ? '0px' : '1ch'};
-    width: ${window.innerWidth > 800 ? '0px' : '1ch'};
+    height: 1ch;
+    width: 1ch;
+    @media only screen and (min-width: 800px) {
+      height: 0px;
+      width: 0px;
+    }
   }
 `;
 
