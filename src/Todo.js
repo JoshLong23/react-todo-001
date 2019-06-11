@@ -37,6 +37,7 @@ const TodoItemText = styled.span`
     transition: none;
     @media only screen and (min-width: 800px) {
       transition: all 0.3s ease-out;
+      transition-delay: 0.1s;
     }
     transition-property: width, background-color;
     button {
@@ -91,7 +92,6 @@ const ToDoList = styled.ul`
 `;
 const CompletedList = styled.ul`
   margin: 0;
-  font-size: 0.9rem;
   border-left: 1px solid ${colours.grey66};
   @media only screen and (max-width: 800px) {
     border-left: none;
@@ -122,7 +122,10 @@ const ActionButton = styled.button`
 
 export default () => {
   const [newItem, setNewItem] = useState();
-  const [list, setList] = useState([]);
+  const [list, setList] = useState([
+    { thing: 'So much to get done!', type: 't' },
+    { thing: 'Do this one first!', type: 'c' }
+  ]);
   const [totalTodo, setTotalTodo] = useState();
   const [totalCompleted, setTotalCompleted] = useState();
 
@@ -229,7 +232,7 @@ export default () => {
             item.type === 'c' ? (
               <li key={i} style={{ display: 'flex' }}>
                 <TodoItemText>
-                  <span tabIndex='0'>
+                  <span style={{ background: colours.red80 }} tabIndex='0'>
                     <ActionButton
                       completed
                       onMouseDown={e => {
