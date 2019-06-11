@@ -123,8 +123,8 @@ const ActionButton = styled.button`
 export default () => {
   const [newItem, setNewItem] = useState();
   const [list, setList] = useState([
-    { thing: 'So much to get done!', type: 't' },
-    { thing: 'Do this one first!', type: 'c' }
+    { thing: 'Hover over the dot to view actions', type: 't' },
+    { thing: 'Once a task is completed, you can restore it or remove it', type: 'c' }
   ]);
   const [totalTodo, setTotalTodo] = useState();
   const [totalCompleted, setTotalCompleted] = useState();
